@@ -1,20 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { RootComponent } from './app.component';
+import { DropDownService } from './service/drop-down.service';
+import { CapitalPipe } from './capital.pipe';
+import { SearchPipe } from './search.pipe';
+import { ViewComponent } from './view/view.component';
+import { RoutesProvider } from './app.routes';
+import { AddComponent } from './add/add.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    RootComponent,
+    CapitalPipe,
+    SearchPipe,
+    ViewComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RoutesProvider
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DropDownService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [RootComponent]
 })
 export class AppModule { }
